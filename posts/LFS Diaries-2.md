@@ -9,7 +9,7 @@ tags: ["linux", "unix", "commands", "how-to", "technology", "lfs", "operating sy
 > Rest of the LFS posts can be viewed [**here**](https://techwebunraveled.xyz/tags/lfs/).
 
 **After setting up a new Ubuntu VM with 30 GB of storage (double the previous 15 GB), I retraced the steps from the first post. Now, I'm ready to move forward while taking snapshots at key milestones.** From the guide we read below:
-<br><br>
+
 > Like most other operating systems, LFS is usually installed on a dedicated partition. The recommended approach to building an LFS system is to use an available empty partition or, if you have enough unpartitioned space, to create one.
 > 
 > A minimal system requires a partition of around 10 gigabytes (GB). This is enough to store all the source tarballs and compile the packages. However, if the LFS system is intended to be the primary Linux system, additional software will probably be installed which will require additional space. A 30 GB partition is a reasonable size to provide for growth. The LFS system itself will not take up this much room. A large portion of this requirement is to provide sufficient free temporary storage as well as for adding additional capabilities after LFS is complete. Additionally, compiling packages can require a lot of disk space which will be reclaimed after the package is installed.
@@ -17,7 +17,7 @@ tags: ["linux", "unix", "commands", "how-to", "technology", "lfs", "operating sy
 > Because there is not always enough Random Access Memory (RAM) available for compilation processes, it is a good idea to use a small disk partition as swap space. This is used by the kernel to store seldom-used data and leave more memory available for active processes. The swap partition for an LFS system can be the same as the one used by the host system, in which case it is not necessary to create another one.
 > 
 > Start a disk partitioning program such as cfdisk or fdisk with a command line option naming the hard disk on which the new partition will be created—for example /dev/sda for the primary disk drive. Create a Linux native partition and a swap partition, if needed. Please refer to cfdisk(8) or fdisk(8) if you do not yet know how to use the programs.
-<br><br>
+
 
 As a summary:
 

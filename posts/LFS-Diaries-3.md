@@ -41,7 +41,7 @@ LFS can work with any file system supported by the Linux kernel, but the most co
 + **ext3**: An improvement over ext2, featuring journaling to help recover from unclean shutdowns.
 + **ext4**: The latest in the ext family, offering enhancements like nano-second timestamps, support for very large files (up to 16 TB), and better performance.
 
-Other file systems like FAT32, NTFS, JFS, and XFS serve specific needs. For more details, you can visit [this comparison](https://en.wikipedia.org/wiki/Comparison_of_file_systems), but for now, I’ll be sticking with ext4. To create an ext4 file system on the LFS partition, we use the command:<br><br>
+Other file systems like FAT32, NTFS, JFS, and XFS serve specific needs. For more details, you can visit [this comparison](https://en.wikipedia.org/wiki/Comparison_of_file_systems), but for now, I’ll be sticking with ext4. To create an ext4 file system on the LFS partition, we use the command:
 
 ```bash
 watari@LFS-Ubuntu:~$ sudo mkfs -v -t ext4 /dev/sda3
@@ -73,8 +73,8 @@ Creating journal (32768 blocks): done
 Writing superblocks and filesystem accounting information: done  
 ```
 
-<br> If you are using an existing swap partition, there is no need to format it. If a new swap partition was created, it will need to be initialized with this command:
-<br>
+ If you are using an existing swap partition, there is no need to format it. If a new swap partition was created, it will need to be initialized with this command:
+
 ```
 mkswap /dev/NAME
 ```
@@ -82,9 +82,9 @@ Replace NAME  with the name of the swap partition.
 
 ## Setting Up the LFS Variable
 
-To proceed, we need to ensure that the environment variable *LFS* is always defined and points to the directory where we will build the LFS system. I will use */mnt/LFS* as an example, following the book's instructions, but you can choose any directory name you prefer.<br><br>
+To proceed, we need to ensure that the environment variable *LFS* is always defined and points to the directory where we will build the LFS system. I will use */mnt/LFS* as an example, following the book's instructions, but you can choose any directory name you prefer.
 
-If you're building LFS on a separate partition, this directory will act as the mount point for that partition. Pick a directory location and add the *LFS* variable to the end of your *~/.bashrc* file using the following commands:<br><br>
+If you're building LFS on a separate partition, this directory will act as the mount point for that partition. Pick a directory location and add the *LFS* variable to the end of your *~/.bashrc* file using the following commands:
 
 ```
 echo "export LFS=/mnt/LFS" >> ~/.bashrc
@@ -115,7 +115,7 @@ sudo mount -v -t ext4 /dev/sda3 $LFS
 ```
 
 Now the layout of the host should look like this:
-<br><br>
+
 
 ```bash
 watari@LFS-Ubuntu:~$ df -h

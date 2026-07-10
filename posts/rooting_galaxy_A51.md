@@ -29,7 +29,7 @@ I used Frija to install the firmware like below:
 
 It takes a while for the firmware to download. 
 
-<br><br>
+
 Find the list of Samsung CSC [here](https://technastic.com/samsung-csc-codes-list/)
 
 ## Preparing the other stuff

@@ -5,14 +5,13 @@ type: "post"
 tags: ["assembly", "security", "reverse-engineering", "how-to", "technology"]
 ---
 
-In a previous [post](/posts/editing_a_exe_binary/) I managed to patch a binary and replace an embedded audio with another WAV audio, and I discovered that it only works if the new audio is exactly the same size as the old one. Weird, right? <br><br>
+In a previous [post](/posts/editing_a_exe_binary/) I managed to patch a binary and replace an embedded audio with another WAV audio, and I discovered that it only works if the new audio is exactly the same size as the old one. Weird, right?
 
-This suggests that maybe there are hardcoded stuff, a checksum? In today's post I will look around in this binary file, compare it with the original and maybe fix it. 
+This suggests that maybe there are hardcoded stuff, a checksum? In today's post I will look around in this binary file, compare it with the original and maybe fix it.
 
 ## Preparation and High Overview
 
 I generated three files for testing:
-<br><br>
 ```
 ➜ ls -al test/
 total 34404
@@ -26,14 +25,13 @@ drwxr-xr-x 6 watari watari     4096 Jun 23 12:26 ..
 -rw-r--r-- 1 watari watari  1893472 Jun 23 12:24 exact_size.wav			# Testing audio, same size as the original
 ```
 
-I did the patching using a [script](https://github.com/Somayyah/bch) I wrote:<br><br>
+I did the patching using a [script](https://github.com/Somayyah/bch) I wrote:
 ```
 ➜ python bch.py test/audience.exe 0x2ab0 test/crying.wav 1893472 audience_p_large.exe
 ➜ python bch.py test/audience.exe 0x2ab0 test/exact_size.wav 1893472 audience_p_exact.exe
 ```
 
 all the files show the signature of MS-DOS executable:
-<br><br>
 ```
 ➜ hexdump -C audience.exe | head -n 1
 00000000  4d 5a 90 00 03 00 00 00  04 00 00 00 ff ff 00 00  |MZ..............|
@@ -41,7 +39,6 @@ all the files show the signature of MS-DOS executable:
 
 The signature 4D 5A is for [DOS MZ Executable](https://en.wikipedia.org/wiki/DOS_MZ_executable), I found this [document](https://wiki.osdev.org/MZ) about the MZ format, The header follows the format:
 
-```
 | Offset | Hex  | Field              | Size | Description                                                                                  |
 | ------ | ---- | ------------------ | ---- | -------------------------------------------------------------------------------------------- |
 | 0      | 0x00 | Signature          | word | `0x5A4D` — ASCII for `'M'` and `'Z'`                                                         |
@@ -59,9 +56,8 @@ The signature 4D 5A is for [DOS MZ Executable](https://en.wikipedia.org/wiki/DOS
 | 24     | 0x18 | Relocation table   | word | File offset of the relocation table                                                          |
 | 26     | 0x1A | Overlay            | word | Overlay number — 0 means main executable                                                     |
 | 28     | 0x1C | Overlay info       | N/A  | Optional data used for managing overlays (non-standard)                                      |
-```
 
-Let's see how this translates to our file(s):<br>
+Let's see how this translates to our file(s):
 
 ```
 ➜ xxd -l 28 audience.exe
@@ -77,24 +73,22 @@ Let's see how this translates to our file(s):<br>
 
 They're identical which makes sense, I just duct taped the content and didn't account for any hardcoded stuff or alignments. Furthermore here's header content:
 
-```
-| Offset | Field              | Raw Hex | Interpreted (Little Endian) | Value Meaning                                               
-| ------ | ------------------ | ------- | ---------------------------  ----------------------------------------------------------- 
-| 0x00   | Signature          | 4d5a    | MZ                          | Magic number
-| 0x02   | Extra bytes        | 9000    | 0x0090 = 144                | 144 bytes in the last page                                  	
-| 0x04   | Pages              | 0300    | 0x0003 = 3                  | 3 pages = 1536 bytes total                                  	
-| 0x06   | Relocation items   | 0000    | 0x0000 = 0                  | No relocation entries                                       
-| 0x08   | Header size        | 0400    | 0x0004 = 4                  | 4 \* 16 = 64 bytes header size                              
-| 0x0A   | Minimum allocation | 0000    | 0x0000 = 0                  | No minimum memory required                                  
-| 0x0C   | Maximum allocation | ffff    | 0xFFFF = 65535              | Take all the RAM you can get behavior                     
-| 0x0E   | Initial SS         | 0000    | 0x0000 = 0                  | Stack segment offset                                        
-| 0x10   | Initial SP         | b800    | 0x00b8 = 184                | Stack pointer                                               
-| 0x12   | Checksum           | 0000    | 0x0000 = 0                  | 0 so unused?!!                                              
-| 0x14   | Initial IP         | 0000    | 0x0000 = 0                  | Entry point instruction pointer                             
-| 0x16   | Initial CS         | 0000    | 0x0000 = 0                  | Entry point code segment                                    
-| 0x18   | Relocation table   | 4000    | 0x0040 = 64                 | Offset to relocation table (right after the 64-byte header) 
-| 0x1A   | Overlay            | 0000    | 0x0000 = 0                  | The main executable                 
-```	
+| Offset | Field              | Raw Hex | Interpreted (Little Endian) | Value Meaning |
+| ------ | ------------------ | ------- | --------------------------- | ------------- |
+| 0x00   | Signature          | 4d5a    | MZ                          | Magic number |
+| 0x02   | Extra bytes        | 9000    | 0x0090 = 144                | 144 bytes in the last page |
+| 0x04   | Pages              | 0300    | 0x0003 = 3                  | 3 pages = 1536 bytes total |
+| 0x06   | Relocation items   | 0000    | 0x0000 = 0                  | No relocation entries |
+| 0x08   | Header size        | 0400    | 0x0004 = 4                  | 4 * 16 = 64 bytes header size |
+| 0x0A   | Minimum allocation | 0000    | 0x0000 = 0                  | No minimum memory required |
+| 0x0C   | Maximum allocation | ffff    | 0xFFFF = 65535              | Take all the RAM you can get behavior |
+| 0x0E   | Initial SS         | 0000    | 0x0000 = 0                  | Stack segment offset |
+| 0x10   | Initial SP         | b800    | 0x00b8 = 184                | Stack pointer |
+| 0x12   | Checksum           | 0000    | 0x0000 = 0                  | 0 so unused?!! |
+| 0x14   | Initial IP         | 0000    | 0x0000 = 0                  | Entry point instruction pointer |
+| 0x16   | Initial CS         | 0000    | 0x0000 = 0                  | Entry point code segment |
+| 0x18   | Relocation table   | 4000    | 0x0040 = 64                 | Offset to relocation table (right after the 64-byte header) |
+| 0x1A   | Overlay            | 0000    | 0x0000 = 0                  | The main executable |
 
 ## Understanding headers content
 Some interesting fields are the **pages**, **header size**, **Relocation table** and **overlay**. The pages field says we need 3 pages of 512 content. There's 144 bytes in  the last page, so total content length is 2 * 512 + 144 = 1168 bytes, but this is way smaller than the original file size!!
@@ -134,7 +128,7 @@ And:
 > After the MS-DOS stub, at the file offset specified at offset 0x3c, is a 4-byte signature that identifies the 
 > file as a PE format image file. This signature is "PE\0\0" (the letters "P" and "E" followed by two null bytes)
 
-<br> So bytes from 0x100 to 0x104 are reserved for the PE signature, followed by the COFF File Header which is 20 bytes long:
+So bytes from 0x100 to 0x104 are reserved for the PE signature, followed by the COFF File Header which is 20 bytes long:
 
 ```
 ➜ xxd -s 0x100 -l 24 audience.exe
@@ -432,8 +426,9 @@ Idx Name          Size      VMA               LMA               File off  Algn
                   CONTENTS, ALLOC, LOAD, READONLY, DATA
   4 .rsrc         001ce690  0000000140006000  0000000140006000  00002a00  2**2
                   CONTENTS, ALLOC, LOAD, READONLY, DATA
-  5 .reloc        00000030  00000001401d5000  00000001401d5000  00d9d8ca  2**2
-                  CONTENTS, ALLOC, LOAD, READONLY, DATA```
+   5 .reloc        00000030  00000001401d5000  00000001401d5000  00d9d8ca  2**2
+                   CONTENTS, ALLOC, LOAD, READONLY, DATA
+```
 
 Now let's fix the size for .rsrc, with binwalk here's the offset:
 
@@ -500,5 +495,3 @@ Idx Name          Size      VMA               LMA               File off  Algn
 Now it looks fine, but it still doesn't work on windows. So there's something else at play.
 
 ### TBD...
-
-<br><br>

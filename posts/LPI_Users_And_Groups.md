@@ -11,15 +11,15 @@ Below is a summary and a writeup on [Linux programming interface](https://github
 ## Users and groups
 
 For each user there's a unique login name and a numeric user identifier (UID). Users can belong to one or more groups. Each group also has a unique name and an identifier (GID). User and group IDs define ownership of various system resources and control the permissions granted to processes accessing those resources. 
-<br><br>
+
 For example, each file belongs to a particular user and group, and each process has a number of user and group IDs that determine who owns the process and what permissions it has when accessing a file. 
-<br><br>
+
 This sounds trivial but how does it translate in practice?
 
 ### The Password File: /etc/passwd
-<br><br>
+
 ![A snippet of the file /etc/passwd showing the users ](/svg/assets/etcpasswd.svg "A snippet of the file /etc/passwd showing the users")
-<br><br>
+
 
 The password file is located in /etc/passwd, and contains one line for each user account, each line is composed of seven fields separated by colons (:), as in the following example:
 
@@ -27,7 +27,7 @@ The password file is located in /etc/passwd, and contains one line for each user
 <login name>:<Password hash placeholder>:<UID>:<GID>:<Comment>:<HOME Directory>:<login shell>
 ```
 
-<br><br>
+
 Below are the fields explained:
 
 + Login name : The unique name for the user, duh.
@@ -38,16 +38,16 @@ Login name: Unique username for the account.
 + Login shell : The shell where the user is transferred to once they log in, this becomes the value for $SHELL.
 
 ### The shadow File: /etc/shadow
-<br><br>
+
 ![A snippet of the file /etc/shadow ](/images/shadow.gif "A snippet of the file /etc/shadow showing the users")
-<br><br>
+
 
 Historically, /etc/passwd contained all user account information, including password hashes. Because /etc/passwd is world-readable, this exposed password hashes to all users, making password cracking attempts feasible. To mitigate this, /etc/shadow was introduced to store password hashes securely, accessible only by the root user, while /etc/passwd retained only non-sensitive account information needed for system operations.
 
 ### The groups File: /etc/group
-<br><br>
+
 ![A snippet of the file /etc/group ](/images/group.gif "A snippet of the file /etc/group showing the groups")
-<br><br>
+
 
 Groups are used to logically gather users that share similar administrative characteristics, for example privilages, access to files .. etc. The groups file is formatted as below:
 
