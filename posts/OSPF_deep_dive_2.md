@@ -89,7 +89,6 @@ All routers within the same area should have the same copy of this table.
 
 The router's routing table, which isn't only for OSPF, because just like other protocols OSPF contributes it's best routes from the topology table to it. It's not an OSPF function but rather the native routing table which the router uses to decide where to forward packets, below is an example of such table:
 
-```bash
 Here’s an example output for the `show ip route` command:
 
 ```bash

@@ -23,7 +23,7 @@ As a summary:
 
 + 30 gigs should be a reasonable amount to accomodate for system growth.
 + It's a good idea to create a /swap partition to be used in case there isn't enough RAM.
-+ We can use ```fdisk``` or ```cfdisk``` to create these partitions.
++ We can use `fdisk` or `cfdisk` to create these partitions.
 
 ## Expected Partitions
 
@@ -283,19 +283,19 @@ ubuntu@ubuntu:~$ █
 
 sda2 is out target, it should already be unmounted since we're on live CD but just to be sure:
 
-```sudo umount /dev/sda2```
+`sudo umount /dev/sda2`
 
 next let's do a filecheck on this partition:
 
-```sudo e2fsck -f /dev/sda2```
+`sudo e2fsck -f /dev/sda2`
 
 Next we gonna try to resize the **filesystem** to 10 Gigs as below:
 
-```sudo resize2fs /dev/sda2 10G```
+`sudo resize2fs /dev/sda2 10G`
 
 The filesystem is now resized, but now we need to shrink the partition itself using fdisk and with the options below in order:
 
-```sudo fdisk /dev/sda```
+`sudo fdisk /dev/sda`
 
 + p : to print the partitions, find the start sector number of sda2
 + d : to delete /dev/sda2 and choose the partition, don't worry this won't delete data!
@@ -303,9 +303,9 @@ The filesystem is now resized, but now we need to shrink the partition itself us
 
 After saving the progress with **w**, we now resize the system again with:
 
-```sudo resize2fs /dev/sda2```
+`sudo resize2fs /dev/sda2`
 
-> Note: If you got the error **bad magic number in superblock** you can easily resolve it with running ```sudo e2fsck -f /dev/sda2``` 
+> Note: If you got the error **bad magic number in superblock** you can easily resolve it with running `sudo e2fsck -f /dev/sda2` 
 
 Then we create a new partition from the unallocated space using fdisk again and type n to create the new partition, since I want to use the remaining empty space I just pressed enter on all the options then saved the progress with w. Now lsblk command shows the new partition successfully created:
 

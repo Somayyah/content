@@ -47,7 +47,7 @@ To work with and view hex dumps, there are several utilities available, such as 
 
 ## Some Background
 
-Before proceeding with the challenge we need to be familiar with file's [magic numbers](https://www.garykessler.net/library/file_sigs.html) or file signatures, which are the first 3 octets of a file that represent it's type, we can view them using a command like ```hd``` and by refering to the internet you can infer the file type, for example:
+Before proceeding with the challenge we need to be familiar with file's [magic numbers](https://www.garykessler.net/library/file_sigs.html) or file signatures, which are the first 3 octets of a file that represent it's type, we can view them using a command like `hd` and by refering to the internet you can infer the file type, for example:
 
 ```
 user@machine$ hd somefile.bz2
@@ -68,19 +68,19 @@ we read the first three octets are **42 5a 68** which means our file is a bzip2 
 
 ## Understanding xxd command
 
-```xxd``` utility isn't pre-installed on all linux destributions however it's easily installed using default package managers as below:
+`xxd` utility isn't pre-installed on all linux destributions however it's easily installed using default package managers as below:
 
 Ubuntu/Debian based:
 
-```sudo apt install xxd```
+`sudo apt install xxd`
 
 Fedora/RHEL based:
 
-```sudo dnf install xxd```
+`sudo dnf install xxd`
 
 Arch-based distros:
 
-```sudo pacman -S xxd```
+`sudo pacman -S xxd`
 
 With the option -h we can have a brief of this command:
 
@@ -152,7 +152,7 @@ data.txt
 bandit12@bandit:/tmp/tmp.ydWoyX3Bw9$
 ```
 
-Next we take a brief look at the ASCII portion of the hex dump, we notice that it starts with ```1f 8b 08``` which is [the magic number](https://www.garykessler.net/library/file_sigs.html) for GZIP archive file:
+Next we take a brief look at the ASCII portion of the hex dump, we notice that it starts with `1f 8b 08` which is [the magic number](https://www.garykessler.net/library/file_sigs.html) for GZIP archive file:
 
 ```
 bandit12@bandit:/tmp/tmp.ydWoyX3Bw9$ hd data.txt | head
@@ -291,7 +291,7 @@ bandit12@bandit:/tmp/tmp.ydWoyX3Bw9$ hd output3.gz
 bandit12@bandit:/tmp/tmp.ydWoyX3Bw9$
 ```
 
-Once again **42 5a 68** is the signature of .bz2 files, so I use ```xxd``` with the option -s to get only the lines starting from 0x400:
+Once again **42 5a 68** is the signature of .bz2 files, so I use `xxd` with the option -s to get only the lines starting from 0x400:
 
 ```
 bandit12@bandit:/tmp/tmp.ydWoyX3Bw9$ xxd -s 0x400 output3.gz > output4.gz
@@ -360,7 +360,7 @@ bandit12@bandit:/tmp/tmp.ydWoyX3Bw9$ hd output4
 00002800
 ```
 
-The new file also shows the signature not starting from the beginning, instead from the offset 0x200 and we see the signature for .gz file so we repeat the same steps to get only the bytes starting from 0x200 into a new file and using ```xxd -r``` command we revert it:
+The new file also shows the signature not starting from the beginning, instead from the offset 0x200 and we see the signature for .gz file so we repeat the same steps to get only the bytes starting from 0x200 into a new file and using `xxd -r` command we revert it:
 
 ```
 bandit12@bandit:/tmp/tmp.ydWoyX3Bw9$ xxd -s 0x200 output4 > output5.txt
