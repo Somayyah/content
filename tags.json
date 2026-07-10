@@ -1,0 +1,133 @@
+{
+    "technology" : {
+        "title" : "Top Technology Blog Tags | Techweb Unraveled",
+        "description" : "Stay up to date with the latest tech trends! Explore our blog tags page for insightful articles on technology, curated for IT consultants and more." 
+    },
+    "chatgpt" : {
+        "title" : "chatgpt | Techweb Unraveled",
+        "description" : "chatgpt"
+    },
+    "dall-e" : {
+        "title" : " dall-e | Techweb Unraveled",
+        "description" : "dall-e"
+    },
+    "prompt-engineering" : {
+        "title" : " prompt-engineering | Techweb Unraveled",
+        "description" : "prompt-engineering"
+    },
+    "how-to" : {
+        "title": "How-to | Techweb Unraveled",
+        "description": "Guides and tutorials for configuration, explanations and information about different topics"
+    },
+    "artificial-intelligence" : {
+        "title": "artificial intelligence | Techweb Unraveled",
+        "description": "artificial intelligence, AI, machine learning"
+    },
+    "explain-like-i'm-five" : {
+        "title": "explain-like-im-five | Techweb Unraveled",
+        "description": "No fluff or jargon, just answers"
+    },
+    "midjourney" : {
+        "title": "midjourney | Techweb Unraveled",
+        "description": "Embark on an extraordinary journey with Midjourney AI, an advanced artificial intelligence model for realistic image generation. Explore the wonders of this cutting-edge technology, from its unique features to practical applications. Learn how to harness Midjourney's capabilities for stunning visual art, content creation, and more"
+    },
+    "cisco-ISE" : {
+        "title": "Cisco ISE | Techweb Unraveled",
+        "description": "Everything relates to Cisco ISE , identity services engine"
+    },
+    "cisco" : {
+        "title": "cisco | Techweb Unraveled",
+        "description": "Articles related to Cisco products and technologies"
+    },
+    "ai" : {
+        "title": "AI | Techweb Unraveled",
+        "description": "Discover the world of AI on Techweb Unraveled. Dive into a range of articles covering artificial intelligence trends, innovations, and practical applications. Stay ahead in the evolving landscape of AI technology."
+    },
+    "posture" : {
+        "title": "posture | Techweb Unraveled",
+        "description": "Endpoint posture with Cisco ISE"
+    },
+    "radius" : {
+        "title": "RADIUS | Techweb Unraveled",
+        "description": "Explore the intricacies of RADIUS (Remote Authentication Dial-In User Service) with our comprehensive articles. Understand how RADIUS enhances network security and user authentication in various IT environments"
+    },
+    "hacks" : {
+        "title": "hacks | Techweb Unraveled",
+        "description": "Delve into creative hacks and clever solutions on Techweb Unraveled. Our hacks tag offers ingenious tips, tricks, and shortcuts for tech enthusiasts looking to optimize their digital life."
+    },
+    "tacacs" : {
+        "title": "TACACS | Techweb Unraveled",
+        "description": "Unravel the complexities of TACACS (Terminal Access Controller Access-Control System) with our expert articles. Learn about this advanced protocol for remote authentication and its role in network security."
+    },
+    "openai" : {
+        "title": "openAI | Techweb Unraveled",
+        "description": "Immerse yourself in the world of OpenAI. Our tag offers insights into the latest developments, research breakthroughs, and applications of OpenAI’s innovative AI technologies and models."
+    },
+    "bing" : {
+        "title": "bing | Techweb Unraveled",
+        "description": "Discover insights and tips on leveraging Bing, Microsoft's search engine. Explore articles on Bing's features, search optimization strategies, and how it compares with other search engines."
+    },
+    "generative art" : {
+        "title": "generative art | Techweb Unraveled",
+        "description": "Explore the fascinating intersection of technology and creativity with our Generative Art tag. Dive into articles on how algorithms and AI are used to create unique and captivating artworks."
+    },
+    "rust" : {
+        "title": "rust | Techweb Unraveled",
+        "description": "Join us in exploring Rust, a game-changing programming language known for its safety and performance. Learn about Rust's features, best practices, and how it's reshaping software development."
+    },
+    "memory safety" : {
+        "title": "Memory Safety | Techweb Unraveled",
+        "description": "Dive into the crucial topic of memory safety in programming. Our articles cover best practices, techniques, and tools to prevent common memory-related errors and enhance software reliability."
+    },
+    "operating systems" : {
+        "title": "Operating systems | Techweb Unraveled",
+        "description": "Explore the foundations and latest developments in operating systems. Our tag covers a range of topics from OS design and architecture to tips and tricks for various operating systems."
+    },
+    "linux" : {
+        "title": "Linux | Techweb Unraveled",
+        "description": "Linux demystified: Browse our Linux tag for everything from beginner guides to advanced tips. Discover the power, flexibility, and freedom of this popular open-source operating system."
+    },
+
+    "programming" : {
+        "title": "programming | Techweb Unraveled",
+        "description": "Programming uncovered: Our tag offers a treasure trove of resources for both novice and seasoned programmers. Stay updated with the latest programming languages, trends, and techniques."
+    },
+    "endpoint profiling" : {
+        "title": "endpoints profiling | Techweb Unraveled",
+        "description": "Discover the art of endpoint profiling in network security. Learn how to identify and manage devices on a network, enhancing security and efficiency in your IT infrastructure."
+    },
+    "VPN" : {
+        "title": "VPN | Techweb Unraveled",
+        "description": "VPN - virtual Private networks"
+    },
+    "opinions" : {
+        "title": "opinions | Techweb Unraveled",
+        "description": "opinions related to culture war, feminism, movies, art, technologies and philosophy"
+    },
+    "OSINT" : {
+        "title": "OSINT | Techweb Unraveled",
+        "description": "Meta Description for a Blog Tag about OSINT (SEO-friendly): Unlock the potential of OSINT - Open Source Intelligence, a cutting-edge tool harnessing publicly available data for powerful insights and improved cybersecurity. Stay ahead with the latest OSINT techniques and best practices to elevate your online investigations."
+    },
+    "azure" : {
+        "title": "azure | Techweb Unraveled",
+        "description": "Dive into insightful articles and tutorials on Azure, Microsoft's leading cloud platform. From getting started guides to advanced configurations, explore the latest trends and best practices in Azure cloud solutions. Maximize your cloud potential and stay updated with our curated Azure-focused content"
+    },
+    "azure AI" : {
+        "title": "azure ai | Techweb Unraveled",
+        "description": "Delve into Azure AI and discover how Microsoft's artificial intelligence services are transforming businesses. Explore the latest trends, case studies, and tutorials on Azure AI."
+    },
+    "cognitive services" : {
+        "title": "cognitive services | Techweb Unraveled",
+        "description": "Explore the realm of Microsoft's Cognitive Services on Techweb Unraveled. Learn about these AI services that enable apps to see, hear, speak, understand, and interpret user needs."
+    }, 
+    "Cyber security": {
+        "title" : "Cyber security | Techweb Unraveled", 
+        "description": "Navigate the complex world of cybersecurity with our insightful articles. Stay informed about the latest threats, trends, and best practices to protect your digital assets and information."
+    },
+    "self-improvement": {
+        "title" : "self-improvement", 
+        "description": "Articles about how I navigate self improvement and my experiments"
+    },
+    "unix": {},
+    "commands": {}
+}
