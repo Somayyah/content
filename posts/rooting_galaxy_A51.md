@@ -25,7 +25,7 @@ The tutorial seems to be written for Windows so no Linux today but that's alrigh
 
 I used Frija to install the firmware like below:
 
-![A screenshot of Frija, after entering the Samsung model, region and IMEI it detected the stock firmware successfully](image.png)
+![A screenshot of Frija, after entering the Samsung model, region and IMEI it detected the stock firmware successfully](/images/image.png)
 
 It takes a while for the firmware to download. 
 
